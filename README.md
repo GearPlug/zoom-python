@@ -37,6 +37,10 @@ Read more about Zoom Oauth: https://developers.zoom.us/docs/integrations/oauth/
 ```python
 user = client.get_current_user()
 ```
+#### - List Users
+```python
+users = client.list_users()
+```
 ### Meetings
 #### - List meetings
 ```python

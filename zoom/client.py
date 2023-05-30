@@ -46,6 +46,9 @@ class Client(object):
     def get_current_user(self):
         return self.get("users/me")
 
+    def list_users(self):
+        return self.get("users")
+
     def list_meetings(self):
         return self.get("users/me/meetings")
 
