@@ -61,7 +61,7 @@ meeting = client.create_meeting(
         schedule_for: str = None,
         timezone: str = None,
         recurrence: dict = None,
-        setting: dict = None,
+        settings: dict = None,
     )
 ```
 More info: https://developers.zoom.us/docs/api/rest/reference/zoom-api/methods/#operation/meetingCreate

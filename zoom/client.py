@@ -65,7 +65,7 @@ class Client(object):
         schedule_for: str = None,
         timezone: str = None,
         recurrence: dict = None,
-        setting: dict = None,
+        settings: dict = None,
     ):
         args = locals()
         body = self.set_form_data(args)
