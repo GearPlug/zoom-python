@@ -46,6 +46,10 @@ users = client.list_users()
 ```python
 meetings = client.list_meetings()
 ```
+#### - Get a meeting
+```python
+meeting = client.get_meeting(meeting_id)
+```
 #### - Create Meeting
 ```python
 meeting = client.create_meeting(

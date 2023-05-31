@@ -52,6 +52,9 @@ class Client(object):
     def list_meetings(self):
         return self.get("users/me/meetings")
 
+    def get_meeting(self, meeting_id):
+        return self.get(f"meetings/{meeting_id}")
+
     def create_meeting(
         self,
         topic: str,
