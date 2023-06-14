@@ -97,8 +97,6 @@ class Client(object):
         auto_approve: bool = None,
     ):
         args = locals()
-        print(type(args))
-        print(args)
         body = self.set_form_data(args)
         return self.post(f"meetings/{meeting_id}/registrants", data=json.dumps(body))
 
