@@ -16,11 +16,12 @@ client = Client(client_id, client_secret)
 To obtain and set an access token, follow this instructions:
 1. **Get authorization URL**
 ```python
-url = client.authorization_url(redirect_uri)
+url = client.authorization_url(redirect_uri, code_challenge)
 ```
 2. **Get access token using code**
 ```python
-response = client.get_access_token(code)
+response = client.get_access_token(code, code_verifier)
+# code_verifier is the same code_challenge
 ```
 3. **Set access token**
 ```python

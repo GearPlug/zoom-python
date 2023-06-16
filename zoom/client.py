@@ -17,10 +17,15 @@ class Client(object):
         self.CLIENT_SECRET = client_secret
         self.REDIRECT_URI = redirect_uri
 
-    def authorization_url(self, redirect_uri=None, state=None):
+    def authorization_url(self, code_challenge, redirect_uri=None, state=None):
         if redirect_uri is not None:
             self.REDIRECT_URI = redirect_uri
-        params = {"client_id": self.CLIENT_ID, "redirect_uri": self.REDIRECT_URI, "response_type": "code"}
+        params = {
+            "client_id": self.CLIENT_ID,
+            "redirect_uri": self.REDIRECT_URI,
+            "response_type": "code",
+            "code_challenge": code_challenge,
+        }
         if state:
             params["state"] = state
         return self.AUTH_URL + "authorize?" + urlencode(params)
@@ -30,8 +35,13 @@ class Client(object):
         self.headers["Authorization"] = f"Basic {encoded_credentials}"
         self.headers["Content-Type"] = "application/x-www-form-urlencoded"
 
-    def get_access_token(self, code):
-        body = {"code": code, "grant_type": "authorization_code", "redirect_uri": self.REDIRECT_URI}
+    def get_access_token(self, code, code_verifier):
+        body = {
+            "code": code,
+            "grant_type": "authorization_code",
+            "redirect_uri": self.REDIRECT_URI,
+            "code_verifier": code_verifier,
+        }
         self.auth_headers()
         return self.post("token", auth_url=True, data=body)
 
