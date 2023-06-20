@@ -1,6 +1,6 @@
 
 # zoom-python
-![](https://img.shields.io/badge/version-0.1.0-success) ![](https://img.shields.io/badge/Python-3.8%20|%203.9%20|%203.10%20|%203.11-4B8BBE?logo=python&logoColor=white)  
+![](https://img.shields.io/badge/version-0.1.1-success) ![](https://img.shields.io/badge/Python-3.8%20|%203.9%20|%203.10%20|%203.11-4B8BBE?logo=python&logoColor=white)  
 
 *zoom-python* is an API wrapper for Zoom, written in Python.  
 This library uses Oauth2 for authentication.
@@ -11,12 +11,13 @@ pip install zoom-python
 ### Usage
 ```python
 from zoom.client import Client
-client = Client(client_id, client_secret)
+client = Client(client_id, client_secret, redirect_uri=None)
 ```
 To obtain and set an access token, follow this instructions:
 1. **Get authorization URL**
 ```python
-url = client.authorization_url(redirect_uri, code_challenge)
+url = client.authorization_url(code_challenge, redirect_uri=None, state=None)
+# redirect_uri required if not given in Client.
 ```
 2. **Get access token using code**
 ```python
